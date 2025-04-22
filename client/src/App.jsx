@@ -1,10 +1,21 @@
-import { Button } from './components/ui/button'
+import React from 'react'
+import { Button } from '@/components/ui/button'
+import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
+import Auth from './pages/auth';
+import Profile from './pages/profile';
+import Chat from './pages/chat';
 
 function App() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-svh">
-      <Button>Click me</Button>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/auth' element={<Auth />} />
+        <Route path="*" element={<Navigate to='/auth' />} />
+        <Route path='/profile' element={<Profile />} />
+        <Route path='/chat' element={<Chat />} />
+
+        </Routes>
+      </BrowserRouter>
   )
 }
 
